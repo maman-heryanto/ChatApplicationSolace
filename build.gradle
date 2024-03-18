@@ -1,0 +1,47 @@
+description = 'A Simple Chat Application'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+compileJava {
+	sourceCompatibility=1.8
+	targetCompatibility=1.8
+}
+compileTestJava {
+	sourceCompatibility=1.8
+	targetCompatibility=1.8
+}
+
+mainClassName = "com.solace.labs.chat.ChatClientApp"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    
+    // Solace Java API
+    compile group: 'com.solacesystems', name: 'sol-jcsmp', version: '10.0.1'
+
+    // Other dependencies
+    compile group: 'com.miglayout', name: 'miglayout-swing', version: '5.0'
+	compile group: 'com.miglayout', name: 'miglayout-core', version: '5.0'
+
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
